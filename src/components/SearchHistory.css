@@ -1,0 +1,25 @@
+.search-history{
+    max-height:280px;
+    overflow-y: auto;
+    margin-top: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius:20px;
+    padding: 3%;
+    background-color:rgba(255, 255, 255, 0.2);
+}
+
+
+.individual-search{
+    display: flex;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius:16px;
+    height: 60px;
+    background: rgba(255, 255, 255, 0.4);
+    align-items: center;  
+    margin-top:16px;
+    padding: 2%;
+    justify-content: space-between;
+}
+
+
+  
