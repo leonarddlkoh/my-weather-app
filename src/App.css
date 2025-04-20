@@ -1,11 +1,32 @@
-.root {
+.app.light {
   display: flex;
   flex-direction: column;
   justify-content: center;  
   align-items: center;  
   height: 100vh; 
   font-family: 'Noto Sans';
+  background-image:  url('/bg-light.png')
 }
+
+.app.dark {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  
+  align-items: center;  
+  height: 100vh; 
+  font-family: 'Noto Sans';
+  background-image:  url('/bg-dark.png')
+}
+
+.theme-switch.light {
+ margin-bottom: 8px;
+ color: #6C40B5;
+}
+
+.theme-switch.dark {
+  margin-bottom: 8px;
+  color: #FFFFFF;
+ }
 
 .content {
   display: flex;
@@ -14,7 +35,7 @@
   max-width: 90vw;
 }
 
-.card {
+.card.light {
   position: relative; 
   overflow: visible; 
   backdrop-filter: blur(10px); 
@@ -25,5 +46,17 @@
   padding: 5%;
 }
 
+
+
+.card.dark {
+  position: relative; 
+  overflow: visible; 
+  backdrop-filter: blur(20px); 
+  background-color: rgba(26, 26, 26, 0.3);
+  justify-content: flex-start;
+  border: 1px solid rgba(26, 26, 26, 0.3);
+  border-radius: 40px;
+  padding: 5%;
+}
 
 

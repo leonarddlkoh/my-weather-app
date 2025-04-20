@@ -1,9 +1,11 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import './SearchBar.css';
 import SearchIcon from '../assets/images/search.png'
+import { ThemeContext } from '../context/ThemeContext';
 
 const SearchBar = ({onSearch}) => {
   const [search, setSearch] = useState('');
+  const {theme} = useContext(ThemeContext)
   const handleChange = (e) => {
     const value = e.target.value;
     setSearch(value);
@@ -19,13 +21,13 @@ const SearchBar = ({onSearch}) => {
 
   return (
     <div style={{display: 'inline-flex', marginBottom: '36px'}}>
-        <div className="input-wrapper">
+        <div className={`input-wrapper ${theme}`}>
             <label>
                 Country/City
             </label>
-            <input className='searchBar' type="text" value={search} onChange={handleChange} onKeyDown={handleKeyDown}/>
+            <input className={`searchBar ${theme}`} type="text" value={search} onChange={handleChange} onKeyDown={handleKeyDown}/>
         </div>
-        <div className='searchIcon' onClick={() => {
+        <div className={`searchIcon ${theme}`} onClick={() => {
             onSearch(search); 
             setSearch('')
             }}>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { getWeather } from "./api/openWeatherApi"
+import { ThemeContext } from "./context/ThemeContext"
 import './App.css'
 import SunImg from './assets/images/sun.png'
 import SearchBar from "./components/SearchBar";
@@ -21,8 +22,12 @@ const initalSearchData = {
 function App() {
   const [currentSearchData, setCurrentSearchData] = useState(initalSearchData);
   const [searchHistory, setSearchHistory] = useState([])
+  const [theme, setTheme] = useState('light')
   const [error, setError] = useState('')
 
+  const toggleTheme = () => {
+    setTheme(prev => (prev === 'light' ? 'dark' : 'light'));
+  }
   const handleSearch = (value) => {
     loadData(value)
   };
@@ -49,23 +54,26 @@ function App() {
   }, [searchHistory])
 
   return (
-    <>
-     <div className="root">
-      <div className="content">
-        <SearchBar onSearch={handleSearch}/>
-        {error && (
-          <div style={{ color: 'red', margin: '8px 0', fontWeight: 'bold' }}>
-            {error}
+    <ThemeContext.Provider value={{ theme, toggleTheme }}>
+      <div className={`app ${theme}`}>
+        <div className="content">
+          <div className ={`theme-switch ${theme}`} onClick={toggleTheme}>
+            {`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
           </div>
-        )}
-        <div className='card'>
-          <img src={SunImg} alt="Weather Icon" style={{position: 'absolute',top: '-50px',right: '10px',width: '140px',zIndex: 2,}}/>
-          <SearchResult currentSearchData={currentSearchData} />
-          <SearchHistory searchHistories={searchHistory} onSearch={handleSearch} onDelete={handleDelete}/>
-        </div>
-     </div>
-    </div>
-    </>
+          <SearchBar onSearch={handleSearch}/>
+          {error && (
+            <div style={{ color: 'red', margin: '8px 0', fontWeight: 'bold' }}>
+              {error}
+            </div>
+          )}
+          <div className= {`card ${theme}`}>
+            <img src={SunImg} alt="Weather Icon" style={{position: 'absolute',top: '-50px',right: '10px',width: '140px',zIndex: 2,}}/>
+            <SearchResult currentSearchData={currentSearchData} />
+            <SearchHistory searchHistories={searchHistory} onSearch={handleSearch} onDelete={handleDelete}/>
+          </div>
+      </div>
+      </div>
+    </ThemeContext.Provider>
   )
 }
 

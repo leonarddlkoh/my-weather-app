@@ -1,0 +1,36 @@
+.container.light{
+  display:flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.container.dark{
+    display:flex;
+    flex-direction: column;
+    row-gap: 8px;
+    color: rgba(255, 255, 255, 1)
+  }
+
+.temp.light{
+    color: #6c40b5;
+    font-size: 81px;
+}
+
+.temp.dark{
+    font-size: 81px;
+}
+
+.info-container.light{
+    display: inline-flex;
+    color: #666666;
+    justify-content: space-between;
+    gap:16px;
+    width:100%
+}
+
+.info-container.dark{
+    display: inline-flex;
+    justify-content: space-between;
+    gap:16px;
+    width:100%
+}
